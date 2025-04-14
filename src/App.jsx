@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import './index.css'
 import ExpenseForm from "./components/ExpenseForm";
-
+import ExpenseTable from "./components/ExpenseTable";
+import "./index.css";
 
 function App() {
   const [expenses, setExpenses] = useState([]);
@@ -11,16 +11,12 @@ function App() {
     (expense) =>
       expense.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       expense.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  ); //filter by search element
 
   const handleAddExpense = (newExpense) => {
     setExpenses([...expenses, { ...newExpense, id: Date.now() }]);
   };
-
-  const handleDeleteExpense = (id) => {
-    setExpenses(expenses.filter((expense) => expense.id !== id));
-  };
-
+  //handleAddExpense function to add new expense
   return (
     <div className="app-container">
       <h1>Expense Tracker</h1>
@@ -38,8 +34,7 @@ function App() {
 
       <ExpenseTable
         expenses={filteredExpenses}
-        onDelete={handleDeleteExpense}
-      />
+       />
     </div>
   );
 }
