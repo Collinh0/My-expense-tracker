@@ -16,7 +16,7 @@ function App() {
   const handleAddExpense = (newExpense) => {
     setExpenses([...expenses, { ...newExpense, id: Date.now() }]);
   };
-  //handleAddExpense function to add new expense
+  
   return (
     <div className="app-container">
       <h1>Expense Tracker</h1>
